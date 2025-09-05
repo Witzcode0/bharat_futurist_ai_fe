@@ -138,7 +138,8 @@ li {
   font-size: var(--font-size-paragraph);
   padding: 0 10px;
   height: 100%;
-  color: #333;
+  color: var(--darkBlue);
+  font-weight: 800;
   transition: color 0.3s;
 }
 .navbar-nav > li > a:hover {
@@ -209,13 +210,16 @@ li {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: var(--darkGray);
+  color: var(--darkBlue);
   padding: 6px 0;
   transition: 0.3s;
 }
 .megamenu-column a:hover {
-  color: var(--darkBlue);
+  color: var(--white);
   padding-left: 10px;
+  background-color: var(--darkBlue);
+  transition: background 0.5s;
+  border-radius: 8px;
 }
 .map-container {
   margin-top: 10px;
@@ -252,8 +256,6 @@ li {
 .navbar-toggler.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
-
-
 .hero-unique {
   position: relative;
   overflow: hidden;
@@ -281,12 +283,20 @@ li {
   font-size: 48px;
   color: var(--darkBlue);
   margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .hero-left p {
   font-size: 18px;
   color: var(--darkGray);
   margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .btn-primary {
@@ -299,32 +309,45 @@ li {
   font-weight: 500;
   transition: background 0.3s;
 }
-
 .btn-primary:hover {
   background: var(--lightBlue);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 25px;
+  border: 2px solid var(--darkBlue);
+  border-radius: 8px;
+  color: var(--darkBlue);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-secondary i {
+  font-size: 24px;
+  color: inherit;
+}
+.btn-secondary:hover {
+  background: var(--darkBlue);
+  color: #fff;
 }
 
 .hero-right {
   flex: 1 1 500px;
   position: relative;
+  height: auto;
 }
-
 .hero-image-wrapper {
   position: relative;
   width: 100%;
 }
-
 .hero-image {
   width: 100%;
+  max-width: 500px;
   display: block;
-  transition: transform 2s ease-in-out;
-}
-
-.hero-image.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  margin: 0 auto;
 }
 
 /* Background floating animation */
@@ -338,26 +361,57 @@ li {
   overflow: hidden;
   z-index: 1;
 }
-
 .hero-bg span {
   position: absolute;
   display: block;
-  width: 80px;
-  height: 80px;
-  background: rgba(25, 64, 99, 0.1);
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--lightBlue), transparent 80%);
   border-radius: 50%;
   animation: float 15s linear infinite;
 }
-
-.hero-bg span:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-.hero-bg span:nth-child(2) { top: 30%; left: 70%; animation-delay: 5s; }
+.hero-bg span:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.hero-bg span:nth-child(2) { top: 40%; left: 90%; animation-delay: 5s; }
 .hero-bg span:nth-child(3) { top: 60%; left: 25%; animation-delay: 10s; }
-.hero-bg span:nth-child(4) { top: 80%; left: 50%; animation-delay: 3s; }
+.hero-bg span:nth-child(4) { top: 80%; left: 45%; animation-delay: 3s; }
+.hero-bg span:nth-child(5) { top: 20%; left: 80%; animation-delay: 8s; }
+.hero-bg span:nth-child(6) { top: 40%; left: 40%; animation-delay: 4s; }
 
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-  50% { transform: translateY(-50px) rotate(180deg); opacity: 0.8; }
+  50% { transform: translateY(-80px) rotate(180deg); opacity: 0.8; }
   100% { transform: translateY(0) rotate(360deg); opacity: 0.6; }
+}
+
+/* ---------- Responsive Styles ---------- */
+
+
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .hero-unique-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-left {
+    flex: 1 1 100%;
+  }
+  .hero-left h1 {
+    font-size: 28px;
+  }
+  .hero-left p {
+    font-size: 15px;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .hero-right {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+  .hero-image {
+    max-width: 300px;
+  }
 }
 
 
@@ -400,22 +454,17 @@ li {
     display: grid;
   }
 
-  .hero-unique-container {
-    flex-direction: column-reverse;
-    text-align: center;
+ .hero-unique {
+    padding: 40px 0;
   }
-
   .hero-left h1 {
     font-size: 36px;
   }
-
-  .hero-right {
-    width: 100%;
+  .hero-left p {
+    font-size: 16px;
   }
-
-  .hero-image-wrapper {
-    max-width: 80%;
-    margin: 0 auto;
+  .hero-image {
+    max-width: 400px;
   }
 
   
