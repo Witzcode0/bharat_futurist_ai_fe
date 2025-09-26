@@ -77,3 +77,44 @@ var swiper = new Swiper(".partners-slider", {
     0: { slidesPerView: 1 }
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const typingEl = document.querySelector(".typing");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typingEl.classList.add("animate"); // start typing
+        observer.unobserve(entry.target);  // run only once
+      }
+    });
+  });
+
+  observer.observe(typingEl);
+});
+
+
+// Function to show the selected tech content
+function showTech(sectionId) {
+  const sidebarItems = document.querySelectorAll(".sidebar-menu ul li");
+  const contentItems = document.querySelectorAll(".sidebar-content .content-item");
+
+  // Remove active class from all sidebar items
+  sidebarItems.forEach(item => item.classList.remove("active"));
+
+  // Add active class to the clicked sidebar item
+  const clickedItem = Array.from(sidebarItems).find(item => item.getAttribute("onclick").includes(sectionId));
+  if (clickedItem) clickedItem.classList.add("active");
+
+  // Hide all content items
+  contentItems.forEach(content => content.classList.remove("active"));
+
+  // Show the selected content
+  const activeContent = document.getElementById(sectionId);
+  if (activeContent) activeContent.classList.add("active");
+}
+
+// Run on page load to show the first item by default
+document.addEventListener("DOMContentLoaded", () => {
+  showTech("languages");
+});
