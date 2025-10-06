@@ -425,7 +425,7 @@ li {
 }
 
 .hero-image-wrapper {
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
 }
 
@@ -1036,9 +1036,14 @@ li {
 
 /* Tech Grid */
 .tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap; /* allows multiple rows */
+  justify-content: flex-start; /* aligns items to the start (left) */
+  gap: 20px; /* same spacing as your grid */
+}
+
+.tech-grid > * {
+  flex: 0 0 100px; /* each item has a minimum width of 60px */
 }
 
 .tech-card {
@@ -1056,6 +1061,109 @@ li {
   font-size: 14px;
   color: var(--darkGray);
 }
+
+.home-blog-section {
+    padding: 60px 0px;
+    background-color: var(--lightGray);
+}
+
+
+.blog-cards-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.blog-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    max-width: 350px;
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.blog-card-image {
+    width: 100%;
+    padding-top: 60%; /* 16:9 ratio */
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.blog-category a {
+    font-size: 0.85rem;
+    color: var(--lightBlue);
+    text-decoration: none;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: var(--darkGray);
+}
+
+.blog-title {
+    font-size: 1.1rem;
+    font-weight: var(--fw-bold);
+    color: var(--darkBlue);
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.blog-intro {
+    font-size: 0.95rem;
+    color: var(--darkGray);
+    line-height: 1.4;
+    height: 45px; /* optional: to keep same height for cards */
+    overflow: hidden;
+}
+
+.read-more-btn {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: var(--darkBlue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: var(--lightBlue);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .blog-cards-wrapper {
+        gap: 20px;
+    }
+    .blog-card {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 767px) {
+    .blog-card {
+        flex: 1 1 100%;
+    }
+}
+
 
 
 /* ================= RESPONSIVE ================= */
@@ -1308,18 +1416,18 @@ li {
 
   .sidebar-menu {
     width: 100%;
-    display: flex;
-    overflow-x: auto;
   }
-
+  
   .sidebar-menu ul {
     display: flex;
+    overflow-x: auto;
     gap: 15px;
   }
 
   .sidebar-menu ul li {
     white-space: nowrap;
   }
+
 
 
   .footer-container {
@@ -1382,18 +1490,19 @@ li {
 
   .sidebar-menu {
     width: 100%;
-    display: flex;
-    overflow-x: auto;
   }
-
+  
   .sidebar-menu ul {
     display: flex;
     gap: 15px;
+    overflow-x: auto;
   }
 
   .sidebar-menu ul li {
     white-space: nowrap;
   }
+
+
 
   .footer-container {
     grid-template-columns: 1fr;
@@ -1444,18 +1553,18 @@ li {
 
   .sidebar-menu {
     width: 100%;
-    display: flex;
-    overflow-x: auto;
   }
-
+  
   .sidebar-menu ul {
     display: flex;
     gap: 15px;
+    overflow-x: auto;
   }
 
   .sidebar-menu ul li {
     white-space: nowrap;
   }
+  
 }
 
 /* ================= END RESPONSIVE ================= */
